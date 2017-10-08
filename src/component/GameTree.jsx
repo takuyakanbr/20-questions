@@ -8,10 +8,6 @@ const mapStateToProps = (state) => ({
   treeData: state.treeData
 });
 
-function nodeCallback(node) {
-  console.log(node);
-}
-
 const treeStyle = {
   nodes: {
     node: {
@@ -26,10 +22,9 @@ const treeStyle = {
 let GameTree = ({ treeData }) => (
   <Tree
     data={ treeData }
-    depthFactor={ 60 }
-    nodeSize={{ x: 110, y: 110 }}
-    onClick={ nodeCallback }
-    scaleExtent={{ min: 0.4, max: 1 }}
+    depthFactor={ 55 }
+    nodeSize={{ x: 145, y: 145 }}
+    scaleExtent={{ min: 0.2, max: 1 }}
     styles={ treeStyle }
     textLayout={{ textAnchor: 'start', x: 12, y: -10 }}
     transitionDuration={ 250 }

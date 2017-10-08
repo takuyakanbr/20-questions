@@ -33,7 +33,7 @@ export default class Node extends React.Component {
   componentWillUpdate(nextProps) {
     const transform = this.setTransformOrientation(
       nextProps.nodeData.x,
-      nextProps.nodeData.y,
+      nextProps.nodeData.y
     );
     this.applyTransform(transform);
   }
@@ -44,6 +44,7 @@ export default class Node extends React.Component {
 
   applyTransform(transform, opacity = 1, done = () => {}) {
     const { transitionDuration } = this.props;
+    if (transitionDuration === 0) return done();
 
     select(this.node)
       .transition()
@@ -82,15 +83,10 @@ export default class Node extends React.Component {
         transform={this.state.transform}
         onClick={this.handleClick}
       >
-        {/* TODO: DEPRECATE <circle /> */}
-        {this.props.circleRadius ? (
-          <circle r={this.props.circleRadius} style={nodeStyle.circle} />
-        ) : (
-          React.createElement(nodeSvgShape.shape, {
-            ...nodeSvgShape.shapeProps,
-            ...nodeStyle.circle,
-          })
-        )}
+        {React.createElement(nodeSvgShape.shape, {
+          ...nodeSvgShape.shapeProps,
+          ...nodeStyle.circle,
+        })}
 
         <text
           className="nodeNameBase"
@@ -123,7 +119,6 @@ export default class Node extends React.Component {
 Node.defaultProps = {
   textAnchor: 'start',
   attributes: undefined,
-  circleRadius: undefined,
   styles: {
     node: {
       circle: {},
@@ -146,6 +141,5 @@ Node.propTypes = {
   name: PropTypes.string.isRequired,
   attributes: PropTypes.object,
   textLayout: PropTypes.object.isRequired,
-  circleRadius: PropTypes.number,
   styles: PropTypes.object,
 };

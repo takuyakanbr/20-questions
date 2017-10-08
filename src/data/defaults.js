@@ -1,5 +1,5 @@
 
-export const defaultData = `9
+export const defaultData = `15
 Ada
 6
 imperative
@@ -31,6 +31,12 @@ COBOL
 imperative
 object-oriented
 procedural
+Erlang
+4
+functional
+event-driven
+concurrent
+distributed
 Haskell
 3
 functional
@@ -58,10 +64,43 @@ Pascal
 2
 imperative
 procedural
+Prolog
+1
+logic
 Python
 5
 imperative
 object-oriented
 functional
 procedural
-reflective`;
+reflective
+Scheme
+1
+functional
+Smalltalk
+8
+imperative
+object-oriented
+functional
+procedural
+reflective
+event-driven
+concurrent
+declarative
+Swift
+7
+imperative
+object-oriented
+functional
+generic
+reflective
+event-driven
+concurrent
+Wolfram Language
+6
+imperative
+object-oriented
+functional
+procedural
+logic
+distributed`;

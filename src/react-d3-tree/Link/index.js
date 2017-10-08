@@ -10,6 +10,8 @@ export default class Link extends React.PureComponent {
     super(props);
     this.state = {
       initialStyle: {
+        // modified to color the link according to its type
+        stroke: (props.linkData.target.type === 'yes') ? '#175a17' : '#871717',
         opacity: 0,
       },
     };
@@ -25,6 +27,7 @@ export default class Link extends React.PureComponent {
 
   applyOpacity(opacity, done = () => {}) {
     const { transitionDuration } = this.props;
+    if (transitionDuration === 0) return done();
 
     select(this.link)
       .transition()
@@ -33,7 +36,9 @@ export default class Link extends React.PureComponent {
       .each('end', done);
   }
 
-  straightPath(linkData) {
+  drawPath() {
+    const { linkData } = this.props;
+
     const straight = svg
       .line()
       .interpolate('basis')
@@ -46,11 +51,6 @@ export default class Link extends React.PureComponent {
     ];
 
     return straight(data);
-  }
-
-  drawPath() {
-    const { linkData } = this.props;
-    return this.straightPath(linkData);
   }
 
   render() {

@@ -9,6 +9,7 @@ function Node(value) {
   this.left = null;
   this.right = null;
   this.parent = null;
+  this.highlight = false;
 }
 
 // checks whether this node is a leaf node
