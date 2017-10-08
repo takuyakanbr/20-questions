@@ -1,0 +1,27 @@
+
+@import '../modules/all';
+
+html, body, .root {
+  height: 100%;
+  width: 100%;
+}
+.l-app {
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  position: fixed;
+}
+
+.nodeBase, .leafNodeBase {
+  font-size: 1.2em;
+}
+
+footer {
+  position: absolute;
+  padding: 8px;
+  left: 5px;
+  bottom: 5px;
+  background-color: $color-box-bg;
+}

@@ -1,0 +1,87 @@
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+article, aside, details, figcaption, figure,
+footer, header, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+
+// project specific resets
+
+@import '../modules/all';
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+html, body {
+  font-family: $font-stack;
+  background-color: $color-bg;
+  color: $color-main;
+  font-size: $text-default;
+}
+
+strong {
+  font-weight: 600;
+}
+code {
+  font-family: monospace;
+}
+
+p, li {
+  margin: 12px 0;
+  color: $color-main;
+}
+li {
+  margin-left: 26px;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 20px 0;
+}
+h1 {
+  font-size: 1.5em;
+}
+h3 {
+  font-size: 1.2em;
+  margin-top: 40px;
+}
+
+figure, img {
+  max-width: 100%;
+}
+figure {
+  margin: 25px;
+}
+figcaption {
+  color: $color-main;
+  font-size: 0.9em;
+}
+@media(max-width: 450px) {
+  figure {
+    margin: 25px 0;
+  }
+}

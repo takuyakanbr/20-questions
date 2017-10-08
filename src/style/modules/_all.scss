@@ -1,0 +1,15 @@
+
+$font-stack: 'Open Sans', sans-serif;
+$text-default: 15px;
+
+
+// colors
+$color-blue-000: #EFF5FE;
+$color-bluegrey-100: #CFD8DC;
+$color-bluegrey-500: #607D8B;
+$color-bluegrey-800: #37474F;
+
+$color-bg: $color-blue-000;
+$color-main: $color-bluegrey-800;
+$color-accent: $color-bluegrey-500;
+$color-box-bg: transparentize($color-bluegrey-100, 0.5);

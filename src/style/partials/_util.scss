@@ -1,0 +1,13 @@
+
+@import '../modules/all';
+
+.link {
+  color: $color-accent;
+  text-decoration: none;
+  transition: all 0.25s;
+  border-bottom: 1px solid $color-accent;
+}
+.link:hover {
+  color: $color-main;
+  border-bottom: 1px solid $color-main;
+}
