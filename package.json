@@ -1,10 +1,10 @@
 {
   "name": "20-questions",
   "version": "0.1",
-  "description": "visualizes state tree of the game 20 questions",
+  "description": "visualizes state tree of the game 20-questions",
   "main": "index.js",
   "author": "Daniel Teo",
-  "license": "BSD-3-Clause",
+  "license": "MIT",
   "scripts": {
     "start": "webpack-dev-server --hot",
     "prod:build": "yarn do:clean && cross-env NODE_ENV=production webpack -p --progress",
@@ -15,18 +15,23 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "clone": "^2.1.1",
+    "d3": "3.5.17",
+    "deep-equal": "^1.0.1",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
-    "react-d3-tree": "^1.5.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
-    "redux": "^3.7.2"
+    "react-transition-group": "1.1.3",
+    "redux": "^3.7.2",
+    "uuid": "^3.1.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.5",
     "babel-cli": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.9",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",

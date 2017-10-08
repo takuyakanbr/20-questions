@@ -1,15 +1,21 @@
 
 $font-stack: 'Open Sans', sans-serif;
+$text-large: 17px;
 $text-default: 15px;
+$text-small: 14px;
 
 
 // colors
-$color-blue-000: #EFF5FE;
+$color-blue-000: #F0F5FE;
 $color-bluegrey-100: #CFD8DC;
 $color-bluegrey-500: #607D8B;
 $color-bluegrey-800: #37474F;
+$color-black: #000000;
+$color-red-800: #c62828;
 
 $color-bg: $color-blue-000;
 $color-main: $color-bluegrey-800;
 $color-accent: $color-bluegrey-500;
-$color-box-bg: transparentize($color-bluegrey-100, 0.5);
+$color-error: $color-red-800;
+$color-box-bg: transparentize($color-bluegrey-100, 0.35);
+$color-overlay: transparentize($color-black, 0.35);

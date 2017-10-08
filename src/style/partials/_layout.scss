@@ -15,13 +15,55 @@ html, body, .root {
 }
 
 .nodeBase, .leafNodeBase {
-  font-size: 1.2em;
+  font-size: $text-large;
+}
+.nodeNameBase {
+  stroke: 0.5;
+}
+
+.l-content {
+  padding: 10px;
+}
+
+.controls {
+  line-height: 1.3em;
+  position: absolute;
+  left: 5px;
+  top: 5px;
+  background-color: $color-box-bg;
+}
+.app-name, .dialog-name {
+  font-size: $text-large;
+  margin-bottom: 3px;
+}
+
+.dialog {
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  position: fixed;
+  background-color: $color-overlay;
+  z-index: 5;
+}
+.dialog-content {
+  background-color: $color-bg;
+  width: 400px;
+  margin: 10vh auto;
+  border-radius: 2px;
+}
+.dialog-content textarea {
+  font-size: $text-small;
+  margin: 6px 10px;
+  width: 90%;
+  resize: none;
 }
 
 footer {
   position: absolute;
-  padding: 8px;
   left: 5px;
   bottom: 5px;
+  font-size: $text-small;
   background-color: $color-box-bg;
 }

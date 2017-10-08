@@ -16,7 +16,7 @@ export function parseInput(input) {
     const name = lines[curLine++].trim();
     const entity = new Entity(name);
     const propCount = parseInt(lines[curLine++].trim());
-    if (isNaN(count)) return null;
+    if (isNaN(count)) return (i === 0) ? null : result;
 
     // read in each property of the object
     for (let j = 0; j < propCount; j++) {
@@ -33,6 +33,8 @@ export function parseInput(input) {
 
 // builds a question tree, given a list of entities
 export function buildTree(entities) {
+  if (!entities) return null;
+
   // sort the entities in descending number of properties
   entities.sort((a, b) => {
     return b.getSize() - a.getSize();
@@ -103,6 +105,8 @@ function d3Tree(data, node) {
 
 // builds a D3 tree for display, given a question tree
 export function buildD3Tree(qnsTree) {
+  if (!qnsTree) return [];
+
   const root = { name: qnsTree.value };
   d3Tree(root, qnsTree);
   return [root];

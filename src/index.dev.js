@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { AppContainer } from 'react-hot-loader';
-import App from './component/app';
+import App from './component/App';
 import reducer, { initialize } from './reducer/index';
 
 const $root = document.getElementById('root');
@@ -31,8 +31,8 @@ render(App);
 
 // enables hot module replacement
 if (module.hot) {
-  module.hot.accept('./component/app', () => {
-    const NewApp = require('./component/app').default;
+  module.hot.accept('./component/App', () => {
+    const NewApp = require('./component/App').default;
     render(NewApp);
   });
 }

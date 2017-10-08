@@ -3,11 +3,16 @@
 
 .link {
   color: $color-accent;
-  text-decoration: none;
+  text-decoration: underline;
   transition: all 0.25s;
-  border-bottom: 1px solid $color-accent;
 }
 .link:hover {
   color: $color-main;
-  border-bottom: 1px solid $color-main;
+}
+
+.hide {
+  display: none;
+}
+.error {
+  color: $color-error;
 }
