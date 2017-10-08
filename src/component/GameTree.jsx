@@ -15,10 +15,10 @@ function nodeCallback(node) {
 const treeStyle = {
   nodes: {
     node: {
-      circle: { fill: '#546E7A', strokeWidth: 1.5 }
+      circle: { fill: '#546E7A', strokeWidth: 1.3 }
     },
     leafNode: {
-      circle: { fill: '#EFF5FE', strokeWidth: 1.5 }
+      circle: { fill: '#EFF5FE', strokeWidth: 1.3 }
     }
   }
 };
@@ -26,8 +26,8 @@ const treeStyle = {
 let GameTree = ({ treeData }) => (
   <Tree
     data={ treeData }
-    depthFactor={ 70 }
-    nodeSize={{ x: 120, y: 120 }}
+    depthFactor={ 60 }
+    nodeSize={{ x: 110, y: 110 }}
     onClick={ nodeCallback }
     scaleExtent={{ min: 0.4, max: 1 }}
     styles={ treeStyle }

@@ -4,7 +4,7 @@ import { svg, select } from 'd3';
 
 import './style.css';
 
-// modified to assume horizontal orientation and straight pathFunc
+// modified to assume vertical orientation and straight pathFunc
 export default class Link extends React.PureComponent {
   constructor(props) {
     super(props);

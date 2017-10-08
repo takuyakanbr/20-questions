@@ -6,6 +6,7 @@ import { resetTree, forward, toggleInput } from '../action/index';
 
 const mapStateToProps = (state) => ({
   state: state.state,
+  moves: state.moves,
   target: state.target
 });
 
@@ -24,12 +25,13 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-let Controls = ({ state, target, showDialog, forward, resetTree }) => (
+let Controls = ({ state, moves, target, showDialog, forward, resetTree }) => (
   <div className="controls">
     <div className="l-content">
       <div className="app-name">20-Questions</div>
       <a className="link" href="#" onClick={ showDialog }>Change Question Tree</a>
       <div>{ 'Target: ' + target.name }</div>
+      <div>{ 'Moves: ' + moves }</div>
       <div>{ 'State: ' + state }</div>
       <a className="link" href="#" onClick={ forward }>Forward</a>
       &nbsp;&middot;&nbsp;

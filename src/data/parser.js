@@ -6,6 +6,7 @@ import Node from './node';
 // returns null if the input is invalid.
 export function parseInput(input) {
   const lines = input.trim().split('\n');
+  const length = lines.length;
   const count = parseInt(lines[0].trim());
   if (isNaN(count)) return null;
 
@@ -13,6 +14,8 @@ export function parseInput(input) {
   const result = [];
   // read in each object
   for (let i = 0; i < count; i++) {
+    if (curLine >= length) return (i === 0) ? null : result;
+
     const name = lines[curLine++].trim();
     const entity = new Entity(name);
     const propCount = parseInt(lines[curLine++].trim());
@@ -21,7 +24,7 @@ export function parseInput(input) {
     // read in each property of the object
     for (let j = 0; j < propCount; j++) {
       const prop = lines[curLine++].trim();
-      if (prop.length > 0) {
+      if (prop && prop.length > 0) {
         entity.addProp(prop);
       }
     }
@@ -88,19 +91,21 @@ export function buildTree(entities) {
 
 // recursive helper function for buildD3Tree
 function d3Tree(data, node) {
-  if (node.left || node.right) {
-    data.children = [];
-  }
+  if (node.left === null && node.right === null) return 0;
+
+  data.children = [];
+  let count = 0;
   if (node.left) {
-    const leftChild = { name: node.left.value };
+    const leftChild = { name: node.left.value, type: 'no' };
     data.children.push(leftChild);
-    d3Tree(leftChild, node.left);
+    count += 1 + d3Tree(leftChild, node.left);
   }
   if (node.right) {
-    const rightChild = { name: node.right.value };
+    const rightChild = { name: node.right.value, type: 'yes' };
     data.children.push(rightChild);
-    d3Tree(rightChild, node.right);
+    count += 1 + d3Tree(rightChild, node.right);
   }
+  return count;
 }
 
 // builds a D3 tree for display, given a question tree
@@ -108,6 +113,6 @@ export function buildD3Tree(qnsTree) {
   if (!qnsTree) return [];
 
   const root = { name: qnsTree.value };
-  d3Tree(root, qnsTree);
+  root.count = d3Tree(root, qnsTree);
   return [root];
 }

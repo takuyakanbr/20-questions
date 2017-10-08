@@ -15,10 +15,10 @@ html, body, .root {
 }
 
 .nodeBase, .leafNodeBase {
-  font-size: $text-large;
+  font-size: $text-default;
 }
 .nodeNameBase {
-  stroke: 0.5;
+  stroke-width: 0.4 !important;
 }
 
 .l-content {
