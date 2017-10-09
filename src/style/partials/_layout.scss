@@ -21,8 +21,8 @@ html, body, .root {
 .controls {
   line-height: 1.3em;
   position: absolute;
-  left: 5px;
-  top: 5px;
+  left: 4px;
+  top: 4px;
   background-color: $color-box-bg;
 }
 .app-name, .dialog-name {
@@ -37,26 +37,39 @@ html, body, .root {
   top: 0;
   overflow: hidden;
   position: fixed;
+  display: flex;
   background-color: $color-overlay;
   z-index: 5;
 }
 .dialog-content {
   background-color: $color-bg;
-  width: 400px;
-  margin: 10vh auto;
+  max-width: 400px;
+  margin: auto;
   border-radius: 2px;
 }
 .dialog-content textarea {
   font-size: $text-small;
   margin: 6px 10px;
+  height: 50vh;
   width: 90%;
   resize: none;
 }
 
 footer {
   position: absolute;
-  left: 5px;
-  bottom: 5px;
+  left: 4px;
+  bottom: 4px;
   font-size: $text-small;
   background-color: $color-box-bg;
+}
+
+@media(min-width: 420px) {
+  .controls {
+    left: 9px;
+    top: 9px;
+  }
+  footer {
+    left: 9px;
+    bottom: 9px;
+  }
 }

@@ -1,9 +1,6 @@
 
-let counter = 0;
-
 // a Node represents a node in the question tree.
 function Node(value) {
-  this.id = counter++;
   this.value = value;
   this.entity = null; // used by leaf nodes
   this.left = null;

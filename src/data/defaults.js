@@ -1,5 +1,5 @@
 
-export const defaultData = `15
+export const defaultData = `17
 Ada
 6
 imperative
@@ -25,6 +25,10 @@ generic
 reflective
 event-driven
 structured
+concurrent
+Clojure
+2
+functional
 concurrent
 COBOL
 3
@@ -77,6 +81,12 @@ reflective
 Scheme
 1
 functional
+R
+4
+imperative
+object-oriented
+functional
+procedural
 Smalltalk
 8
 imperative

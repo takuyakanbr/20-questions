@@ -31,7 +31,7 @@ let InputDialog = ({ showInput, textInput, errorMessage, changeTree, closeDialog
       <p className="help-text">Enter the new tree data below.
         Refer to the default tree data for the required format.</p>
       <p className={ 'error ' + (errorMessage ? 'show' : 'hide') }>{ errorMessage }</p>
-      <textarea id="input-textarea" rows="18" defaultValue={ textInput } />
+      <textarea id="input-textarea" defaultValue={ textInput } />
       <p>
         <a className="link" href="#" onClick={ changeTree }>Update</a>
         &nbsp;&middot;&nbsp;

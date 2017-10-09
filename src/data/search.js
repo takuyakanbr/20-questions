@@ -36,6 +36,11 @@ export function bestSubtree(tree) {
   }
 
   search(tree);
+
+  // search upwards to find the first child of a parent with 2 children
+  while (!candidate.parent.hasBothChildren())
+    candidate = candidate.parent;
+
   return candidate;
 }
 
@@ -46,14 +51,10 @@ export function findEntity(node, entity) {
   return findEntity(node.left, entity) || findEntity(node.right, entity);
 }
 
-// removes the given subtree from its parent tree.
-// first searches upwards to find the first child of a parent with 2 children
+// remove the given node from its parent
 export function trimTree(subtree) {
-  while (!subtree.parent.hasBothChildren())
-    subtree = subtree.parent;
-
   const parent = subtree.parent;
-  if (parent.left && parent.left.id === subtree.id) parent.left = null;
+  if (parent.left && parent.left == subtree) parent.left = null;
   else parent.right = null;
   subtree.parent = null;
 }
