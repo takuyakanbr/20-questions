@@ -2,16 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { svg, select } from 'd3';
 
-import './style.css';
-
 // modified to assume vertical orientation and straight pathFunc
 export default class Link extends React.PureComponent {
   constructor(props) {
     super(props);
+    // modified to add className based on child node's linkClass attribute
+    this.class = props.linkData.target.linkClass || '';
     this.state = {
       initialStyle: {
-        // modified to color the link according to its type
-        stroke: (props.linkData.target.type === 'yes') ? '#175a17' : '#871717',
         opacity: 0,
       },
     };
@@ -61,7 +59,7 @@ export default class Link extends React.PureComponent {
           this.link = l;
         }}
         style={{ ...this.state.initialStyle, ...styles }}
-        className="linkBase"
+        className={ 'linkBase ' + this.class }
         d={this.drawPath()}
       />
     );

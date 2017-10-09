@@ -1,0 +1,44 @@
+// react-d3-tree styles
+
+.rd3t-tree-container {
+  width: 100%;
+  height: 100%;
+}
+.rd3t-grabbable {
+  cursor: move; /* fallback if grab cursor is unsupported */
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+.rd3t-grabbable:active {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+.nodeBase {
+  cursor: pointer;
+  fill: #777;
+  stroke: #000;
+  stroke-width: 2;
+}
+.leafNodeBase {
+  cursor: pointer;
+  fill: transparent;
+  stroke: #000;
+  stroke-width: 2;
+}
+.nodeNameBase {
+  fill: #000;
+  stroke: #000;
+  stroke-width: 1;
+}
+.nodeAttributesBase {
+  fill: #777;
+  stroke: #777;
+  stroke-width: 1;
+  font-size: smaller;
+}
+.linkBase {
+  fill: none;
+  stroke: #000;
+}

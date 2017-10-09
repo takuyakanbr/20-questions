@@ -22,16 +22,17 @@ const startState = {
 function recreateTree(textInput) {
   const entities = parseInput(textInput);
   const tree = buildTree(entities);
+  const target = getRandomElement(entities);
   return {
     errorMessage: null,
     entities,
     textInput,
     tree,
     subtree: null,
-    treeData: buildD3Tree(tree),
+    treeData: buildD3Tree(tree, target.name),
     moves: 0,
     state: 'Tree Created',
-    target: getRandomElement(entities)
+    target
   };
 }
 
@@ -43,6 +44,7 @@ function stepForward(state) {
 
   if (state.state.indexOf('Next Best Subtree') !== -1) {
     // trim the current tree
+    state.subtree.highlight = false;
     let tree = state.tree;
     if (findEntity(state.subtree, state.target)) {
       tree = state.subtree;
@@ -51,7 +53,7 @@ function stepForward(state) {
     }
     return {
       tree,
-      treeData: buildD3Tree(tree),
+      treeData: buildD3Tree(tree, state.target.name),
       moves: state.moves + 1,
       state: `Tree Trimmed (#${state.moves + 1})`
     };
@@ -59,9 +61,10 @@ function stepForward(state) {
   } else {
     // find the next best subtree
     const subtree = bestSubtree(state.tree);
+    subtree.highlight = true;
     return {
       subtree,
-      treeData: buildD3Tree(subtree),
+      treeData: buildD3Tree(state.tree, state.target.name),
       state: `Next Best Subtree (#${state.moves + 1})`
     };
   }

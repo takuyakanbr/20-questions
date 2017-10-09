@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import uuid from 'uuid';
 import { select } from 'd3';
 
-import './style.css';
-
 // modified to assume vertical orientation
 export default class Node extends React.Component {
   constructor(props) {
@@ -13,6 +11,8 @@ export default class Node extends React.Component {
     const originX = parent ? parent.x : 0;
     const originY = parent ? parent.y : 0;
 
+    // modified to add className based on node's nodeClass attribute
+    this.class = props.nodeData.nodeClass || '';
     this.state = {
       transform: this.setTransformOrientation(originX, originY),
       initialStyle: {
@@ -79,7 +79,7 @@ export default class Node extends React.Component {
           this.node = n;
         }}
         style={this.state.initialStyle}
-        className={nodeData._children ? 'nodeBase' : 'leafNodeBase'}
+        className={(nodeData._children ? 'nodeBase ' : 'leafNodeBase ') + this.class}
         transform={this.state.transform}
         onClick={this.handleClick}
       >

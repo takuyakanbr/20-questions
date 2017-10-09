@@ -2,7 +2,7 @@
 import Entity from './entity';
 import Node from './node';
 
-// parses a specially formatted input into an array of Entitys.
+// parses a specially formatted input into an array of entities.
 // returns null if the input is invalid.
 export function parseInput(input) {
   const lines = input.trim().split('\n');
@@ -14,12 +14,14 @@ export function parseInput(input) {
   const result = [];
   // read in each object
   for (let i = 0; i < count; i++) {
-    if (curLine >= length) return (i === 0) ? null : result;
+    if (curLine >= length) // ran out of lines
+      return (i === 0) ? null : result;
 
     const name = lines[curLine++].trim();
     const entity = new Entity(name);
     const propCount = parseInt(lines[curLine++].trim());
-    if (isNaN(count)) return (i === 0) ? null : result;
+    if (isNaN(count)) // invalid property count
+      return (i === 0) ? null : result;
 
     // read in each property of the object
     for (let j = 0; j < propCount; j++) {
@@ -89,30 +91,36 @@ export function buildTree(entities) {
   return root;
 }
 
-// recursive helper function for buildD3Tree
-function d3Tree(data, node) {
-  if (node.left === null && node.right === null) return 0;
-
-  data.children = [];
-  let count = 0;
-  if (node.left) {
-    const leftChild = { name: node.left.value, type: 'no' };
-    data.children.push(leftChild);
-    count += 1 + d3Tree(leftChild, node.left);
-  }
-  if (node.right) {
-    const rightChild = { name: node.right.value, type: 'yes' };
-    data.children.push(rightChild);
-    count += 1 + d3Tree(rightChild, node.right);
-  }
-  return count;
-}
-
-// builds a D3 tree for display, given a question tree
-export function buildD3Tree(qnsTree) {
+// builds a D3 tree for display, given a question tree and the current target
+export function buildD3Tree(qnsTree, target) {
   if (!qnsTree) return [];
 
-  const root = { name: qnsTree.value };
+  // recursive helper function
+  function d3Tree(data, node) {
+    if (node.left === null && node.right === null) return 0;
+
+    data.children = [];
+    let count = 0;
+    if (node.left) {
+      const leftChild = { name: node.left.value, nodeClass: '', linkClass: 'link--no' };
+      if (node.left.highlight) leftChild.nodeClass = 'node--highlight';
+      if (node.left.isTarget(target)) leftChild.nodeClass += ' node--target';
+      data.children.push(leftChild);
+      count += 1 + d3Tree(leftChild, node.left);
+    }
+    if (node.right) {
+      const rightChild = { name: node.right.value, nodeClass: '', linkClass: 'link--yes' };
+      if (node.right.highlight) rightChild.nodeClass = 'node--highlight';
+      if (node.right.isTarget(target)) rightChild.nodeClass += ' node--target';
+      data.children.push(rightChild);
+      count += 1 + d3Tree(rightChild, node.right);
+    }
+    return count;
+  }
+
+  const root = { name: qnsTree.value, nodeClass: '' };
+  if (qnsTree.highlight) root.nodeClass = 'node--highlight';
+  if (qnsTree.isTarget(target)) root.nodeClass += ' node--target';
   root.count = d3Tree(root, qnsTree);
   return [root];
 }

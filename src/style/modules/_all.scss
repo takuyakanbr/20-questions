@@ -9,13 +9,24 @@ $text-small: 14px;
 $color-blue-000: #F0F5FE;
 $color-bluegrey-100: #CFD8DC;
 $color-bluegrey-500: #607D8B;
+$color-bluegrey-600: #546E7A;
 $color-bluegrey-800: #37474F;
 $color-black: #000000;
+$color-green-300: #81C784;
 $color-red-800: #c62828;
+$color-yellow-700: #FBC02D;
+$color-darkred: #871717;
+$color-darkgreen: #175a17;
 
 $color-bg: $color-blue-000;
 $color-main: $color-bluegrey-800;
 $color-accent: $color-bluegrey-500;
 $color-error: $color-red-800;
+
+$color-node-inner: $color-bluegrey-600;
+$color-node-target: $color-green-300;
+$color-node-highlight: $color-yellow-700;
+$color-link-no: $color-darkred;
+$color-link-yes: $color-darkgreen;
 $color-box-bg: transparentize($color-bluegrey-100, 0.35);
 $color-overlay: transparentize($color-black, 0.35);

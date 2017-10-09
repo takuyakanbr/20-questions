@@ -14,13 +14,6 @@ html, body, .root {
   position: fixed;
 }
 
-.nodeBase, .leafNodeBase {
-  font-size: $text-default;
-}
-.nodeNameBase {
-  stroke-width: 0.4 !important;
-}
-
 .l-content {
   padding: 10px;
 }

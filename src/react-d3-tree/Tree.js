@@ -5,9 +5,8 @@ import clone from 'clone';
 import deepEqual from 'deep-equal';
 import uuid from 'uuid';
 
-import Node from '../Node';
-import Link from '../Link';
-import './style.css';
+import Node from './Node';
+import Link from './Link';
 
 export default class Tree extends React.Component {
   constructor(props) {
@@ -26,7 +25,7 @@ export default class Tree extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // Clone new data & assign internal properties
+    // Assign internal properties
     if (!deepEqual(this.props.data, nextProps.data)) {
       this.setState({
         data: this.assignInternalProperties(nextProps.data),

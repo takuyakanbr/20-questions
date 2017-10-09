@@ -1,0 +1,29 @@
+
+@import '../modules/all';
+
+.nodeBase, .leafNodeBase {
+  font-size: $text-default;
+}
+.nodeBase circle {
+  fill: $color-node-inner;
+  stroke-width: 1.3;
+}
+.leafNodeBase circle {
+  fill: $color-bg;
+  stroke-width: 1.3;
+}
+.nodeNameBase {
+  stroke-width: 0.4;
+}
+.node--target circle {
+  fill: $color-node-target;
+}
+.node--highlight circle {
+  fill: $color-node-highlight;
+}
+.link--no {
+  stroke: $color-link-no;
+}
+.link--yes {
+  stroke: $color-link-yes;
+}
