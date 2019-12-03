@@ -1,9 +1,9 @@
 
-import path from 'path';
-import webpack from 'webpack';
-import autoprefixer from 'autoprefixer';
-import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+const path = require('path');
+const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const isProd = process.env.NODE_ENV === 'production';
 const globals = {
@@ -35,17 +35,30 @@ let config = {
       { test: /\.(jpe?g|png|gif|dat)$/i, loader: 'file-loader?name=[name].[ext]' },
       { test: /\.ico$/, loader: 'file-loader?name=[name].[ext]' },
       { test: /\.(css|scss|sass)$/, use: isProd ?
-        ExtractTextPlugin.extract([
+        [
+          MiniCssExtractPlugin.loader,
           'css-loader',
           { loader: 'postcss-loader', options: { plugins: [autoprefixer] } },
           'sass-loader'
-        ]) : [
+        ] : [
           'style-loader',
           'css-loader',
           { loader: 'postcss-loader', options: { plugins: [autoprefixer] } },
           'sass-loader'
         ] },
     ]
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        styles: {
+          name: 'styles',
+          test: /\.css$/,
+          chunks: 'all',
+          enforce: true
+        }
+      }
+    }
   }
 };
 
@@ -55,8 +68,9 @@ if (isProd) {
   config.plugins = [
     new webpack.DefinePlugin(globals),
     new webpack.NoEmitOnErrorsPlugin(),
-    new ExtractTextPlugin('[name].[contenthash].css'),
-    new webpack.optimize.UglifyJsPlugin({ sourceMap: true }),
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css',
+    }),
 
     new HtmlWebpackPlugin({
       template: 'src/index.ejs',
@@ -103,4 +117,4 @@ if (isProd) {
 }
 
 
-export default config;
+module.exports = config;
